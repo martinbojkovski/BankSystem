@@ -51,9 +51,9 @@ Follow these steps to get BankSystem up and running on your local machine:
           "type": "TRANSACTION"  ---> if can change here for DEPOSIT or WITHDRAW (Needs to be in all Capital letters).
       }
 6. For Different Filtering: <br>
-   **List transactions for any account**: GET: [http://localhost:8080/api/transactions/{id}](http://localhost:8080/api/transactions/{id}) ---> This shows the transactions where the account with the {id} is a sender or reciever.
-   **Check account balance**": GET: [http://localhost:8080/api/accounts/balance/{id}](http://localhost:8080/api/accounts/balance/{id})
-   **Check bank total transaction fee amount**: GET: [http://localhost:8080/api/banks/transaction_fees/{id}](http://localhost:8080/api/banks/transaction_fees/{id})
+   **List transactions for any account**: GET: [http://localhost:8080/api/transactions/{id}](http://localhost:8080/api/transactions/{id}) ---> This shows the transactions where the account with the {id} is a sender or reciever. <br>
+   **Check account balance**": GET: [http://localhost:8080/api/accounts/balance/{id}](http://localhost:8080/api/accounts/balance/{id}) <br>
+   **Check bank total transaction fee amount**: GET: [http://localhost:8080/api/banks/transaction_fees/{id}](http://localhost:8080/api/banks/transaction_fees/{id}) <br>
    **Check bank total transfer amount**: GET: [http://localhost:8080/api/banks/transfer_amount/{id}](http://localhost:8080/api/banks/transfer_amount/{id})
 
 
