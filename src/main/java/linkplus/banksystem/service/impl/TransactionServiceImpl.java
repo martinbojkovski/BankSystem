@@ -22,6 +22,7 @@ public class TransactionServiceImpl implements TransactionService {
     private final TransactionRepository transactionRepository;
     private final AccountRepository accountRepository;
     private final BankRepository bankRepository;
+    private static final Double THRESHOLD_FEE = 500.00;
 
     public TransactionServiceImpl(TransactionRepository transactionRepository, AccountRepository accountRepository, BankRepository bankRepository) {
         this.transactionRepository = transactionRepository;
@@ -45,7 +46,7 @@ public class TransactionServiceImpl implements TransactionService {
             if(accountSender.getTotalBalance() >= transactionDTO.getAmount()){
                 accountSender.setTotalBalance(accountSender.getTotalBalance() - transactionDTO.getAmount());
                 this.accountRepository.save(accountSender);
-                if(transactionDTO.getAmount() > 500.00){
+                if(transactionDTO.getAmount() > THRESHOLD_FEE){
 
                     Double amountReceived = transactionDTO.getAmount() * (100-sendersBank.getPercentFeeAmount()) / 100;
                     sendersBank.setTotalTransactionFeeAmount(sendersBank.getTotalTransactionFeeAmount() + (transactionDTO.getAmount() * sendersBank.getPercentFeeAmount() / 100));
