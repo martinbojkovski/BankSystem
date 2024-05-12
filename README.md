@@ -9,7 +9,7 @@ BankSystem is a Java SpringBoot Restfull application designed to simulate the tr
 ## Installation
 Follow these steps to get BankSystem up and running on your local machine:
 
-1. Ensure you have Java and Maven installed.
+1. Ensure you have Java, Maven and Docker Desktop installed.
 2. Clone this repository to your local machine.
 3. Navigate to the project directory and run `mvn spring-boot:run` to start the application.
 4. Run the docker-compose.yaml file so the postgresql database will create as a container in Docker and the database will be available.
