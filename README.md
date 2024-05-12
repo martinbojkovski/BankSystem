@@ -29,8 +29,8 @@ Follow these steps to get BankSystem up and running on your local machine:
         "bankCustomers": [],
         "totalTransactionFeeAmount": 0.0,
         "totalTransferAmount": 0.0,
-        "percentFeeAmount": 12, ---> Here you can enther the percentage fee that you like (12 means 12%).
-        "flatFeeAmount": 35  ---> Here you can enther the flatFee amount in $.
+        "percentFeeAmount": 12, ---> Here you can enter the percentage fee that you like (12 means 12%).
+        "flatFeeAmount": 35  ---> Here you can enter the flatFee amount in $.
     }
 4. After adding a bank, to add some customers use the POST: [http://localhost:8080/api/accounts/add](http://localhost:8080/api/accounts/add)   <br>
    The json file should look like in this example:
