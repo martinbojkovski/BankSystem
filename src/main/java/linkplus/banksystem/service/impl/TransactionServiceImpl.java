@@ -5,10 +5,7 @@ import linkplus.banksystem.models.Bank;
 import linkplus.banksystem.models.DTO.TransactionDTO;
 import linkplus.banksystem.models.Transaction;
 import linkplus.banksystem.models.TransactionType;
-import linkplus.banksystem.models.exceptions.BankNotFoundException;
-import linkplus.banksystem.models.exceptions.CustomerAccountNotFoundException;
-import linkplus.banksystem.models.exceptions.DepositException;
-import linkplus.banksystem.models.exceptions.InsufficientFundsException;
+import linkplus.banksystem.models.exceptions.*;
 import linkplus.banksystem.repository.AccountRepository;
 import linkplus.banksystem.repository.BankRepository;
 import linkplus.banksystem.repository.TransactionRepository;
@@ -85,16 +82,17 @@ public class TransactionServiceImpl implements TransactionService {
         }
         else{ // TransactionType.WITHDRAW
             if(accountSender.equals(accountReceiver)){
+                if(accountSender.getTotalBalance() > transactionDTO.getAmount()){
+                    sendersBank.setTotalTransferAmount(sendersBank.getTotalTransferAmount() + transactionDTO.getAmount());
+                    this.bankRepository.save(sendersBank);
 
-                sendersBank.setTotalTransferAmount(sendersBank.getTotalTransferAmount() + transactionDTO.getAmount());
-                this.bankRepository.save(sendersBank);
-
-                accountReceiver.setTotalBalance(accountReceiver.getTotalBalance() - transactionDTO.getAmount());
-                this.accountRepository.save(accountReceiver);
-
-
+                    accountReceiver.setTotalBalance(accountReceiver.getTotalBalance() - transactionDTO.getAmount());
+                    this.accountRepository.save(accountReceiver);
+                }else{
+                    throw new InsufficientFundsException(accountSender.getId());
+                }
             }else {
-                throw new InsufficientFundsException(accountSender.getId());
+                throw new WithdrawException();
             }
         }
 
